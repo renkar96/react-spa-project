@@ -1,8 +1,8 @@
 import NavBar from "./components/Navbar/navbar"
 import ItemListContainer from "./components/ItemListContainer"
-import { Navigate, Route, Routes } from "react-router-dom"
 import Home from "./components/Home"
 import ItemDetailContainer from "./components/ItemDetailContainer"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />}/>
         <Route path="/home" element={<Home />} />
-        <Route path="/products" element={<ItemListContainer/>}/>
+        <Route path="/category/:categoryName" element={<ItemListContainer/>}/>
         <Route path="/products/:id" element={<ItemDetailContainer/>}/>
       </Routes>
     </>

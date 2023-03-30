@@ -14,6 +14,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link, NavLink } from 'react-router-dom';
+import styles from "./navbar.module.scss"
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -96,8 +98,8 @@ export default function PrimarySearchAppBar({icon}) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>inicio</MenuItem>
+      <MenuItem onClick={handleMenuClose}>cuenta</MenuItem>
     </Menu>
   );
 
@@ -146,21 +148,33 @@ export default function PrimarySearchAppBar({icon}) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            sx={{ mr: 3 }}>
+          <Typography x={{ mr: 3 }}>
+            <Link to="/home">
             <img src={icon} alt="" width="50" height="50"/>
+            </Link>
           </Typography>
 
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            
-          >
-            <MenuIcon />
-          </IconButton>
-          
+          <Typography className={styles.navbarContainer}> 
+          <NavLink to="/home">
+            <button className={styles.navbarButton}>INICIO</button>
+          </NavLink>
+          <NavLink to="/category/men's clothing">
+            <button className={styles.navbarButton}>MEN'S CLOTHING</button>
+          </NavLink>
+          <NavLink to="/category/women's clothing">
+            <button className={styles.navbarButton}>WOMEN'S CLOTHING</button>
+          </NavLink>
+          <NavLink to="/category/jewelery">
+            <button className={styles.navbarButton}>JEWELERY</button>
+          </NavLink>
+          <NavLink to="/category/electronics">
+            <button className={styles.navbarButton}>ELECTRONICS</button>
+          </NavLink>
+          </Typography>
+
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -168,17 +182,17 @@ export default function PrimarySearchAppBar({icon}) {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              sx={{ mr: 3 }}
+              sx={{ mr: 8 }}
             />
           </Search>
 
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <ShoppingCartIcon/>
               </Badge>
             </IconButton>
+
+
             <IconButton
               size="large"
               edge="end"
@@ -190,6 +204,7 @@ export default function PrimarySearchAppBar({icon}) {
             >
               <AccountCircle />
             </IconButton>
+
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -202,6 +217,7 @@ export default function PrimarySearchAppBar({icon}) {
             >
               <MoreIcon />
             </IconButton>
+
           </Box>
         </Toolbar>
       </AppBar>
