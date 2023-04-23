@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+
+import { useContext, useEffect, useState } from "react";
+import { dataContext } from "../Context/DataContext";
 import { useParams } from 'react-router-dom';
 import styles from "./itemDetailContainer.module.scss";
 import { doc, getDoc } from 'firebase/firestore';
@@ -19,6 +21,12 @@ const ItemDetailContainer = () => {
     getItem()
   } ,[])
 
+  const { cart, setCart } = useContext(dataContext);
+
+  const buyProducts = (item) => {
+    setCart([...cart, item])
+  }
+
   return (
             
             <div className={styles.containerUnoPrincipal}>
@@ -28,6 +36,7 @@ const ItemDetailContainer = () => {
                 <p>{item.description}</p>
                 <p>$ {item.price}</p>
                 <p>{item.category}</p>
+                <button onClick={() => buyProducts(item)}>Agregar</button>
               </div>
             </div>
             

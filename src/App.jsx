@@ -3,8 +3,8 @@ import ItemListContainer from "./components/ItemListContainer"
 import Home from "./components/Home"
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import { Navigate, Route, Routes } from "react-router-dom"
-import cartWidget from "./components/CartWidget"
 import DataProvider from "./components/Context/DataContext"
+import CartContent from "./components/CartContent/CartContent"
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />}/>
         <Route path="/home" element={<Home />} />
-        <Route path="/cart" element={<cartWidget/>} />
+        <Route path="/cart" element={<CartContent/>} />
         <Route path="/category/:categoryName" element={<ItemListContainer/>}/>
         <Route path="/item/:id" element={<ItemDetailContainer/>}/>
       </Routes>
