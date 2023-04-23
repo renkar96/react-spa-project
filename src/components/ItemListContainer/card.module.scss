@@ -1,6 +1,7 @@
-.card{
+.principal{
   display: flex;
-  position: relative;
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 .container {
@@ -8,20 +9,10 @@
     border-radius: 4px;
     padding: 1rem;
     margin: 1rem;
-    width: 350px;
-    height: auto;
+    width: 250px;
+    height: 450px;
     text-align: center;
     
     
   }
 
-.containeruno{
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 1rem;
-  margin: 1rem;
-  width: 350px;
-  height: auto;
-  text-align: center;
-  align-items: center;
-}

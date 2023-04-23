@@ -1,47 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useContext } from "react";
+import { dataContext } from "../Context/DataContext";
 import styles from "./card.module.scss";
+import { Link,  } from 'react-router-dom';
 
-const ItemListContainer = () => {
-  const [products, setProducts] = useState([])
-  const {categoryName} = useParams();
-  if (categoryName) {
-    useEffect(() => {
-      fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data.filter((product)=>product.category === categoryName));
-      });
-  }, [categoryName]);
-    
-  }
-  else 
-    {
-      useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-        .then((response) => response.json())
-        .then((data) => {
-          setProducts(data);
-        });
-    }, []);
-      
-    }
+
+function ItemListContainer() {
+  const {items} = useContext (dataContext);
+
   return (
-    <div>
-      {products.map((products) => (
-        <Link to={`/products/${products.id}`}>
-        <div className={styles.card}>
-        <div className={styles.container}>
-        <h3>{products.title}</h3>
-        <img src={products.image} alt={products.title} width="200" height="250" />
-        <p>{products.description}</p>
-        <p>$ {products.price}</p>
-        <p>{products.category}</p>
+    
+      <div className={styles.principal}>
+        {items.map((item) => (
+          <Link key={item.id} to={`/item/${item.id}`}>
+          <div  className={styles.container}>
+            <h3>{item.title}</h3>
+            <img src={item.image} alt={item.title} width="150" height="150" />
+            <p>$ {item.price}</p>
+            <p>{item.category}</p>
+            <button>Agregar</button>
+            <button>Ver mas</button>
+          </div>
+          </Link>
+        ))}
       </div>
-      </div>
-      </Link>
-      ))}
-    </div>
   )
 }
 

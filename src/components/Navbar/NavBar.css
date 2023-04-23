@@ -1,0 +1,31 @@
+.nav-container {
+    display: flex;
+     justify-content: center;
+     margin: 10px;
+     
+     
+ }
+ .navbar {
+     display: flex;
+     align-items: center;
+     margin-top: 40px;
+     margin-left: 30px;
+     padding: 0px 14px;
+     height: 80px;
+     background-color: rgba(0, 0, 0, .4);
+     border-radius: 50px;
+     text-decoration: none;
+     
+     
+ }
+ .navbar .navbarButton{
+    padding: 16px ;
+    position: relative;
+    transition: 0.3s ease-in-out;
+    color: white;
+ }
+ .navbar .navbarButton:hover {
+    color: black;
+    background-color: white;
+    border-radius: 50px;
+ }

@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import styles from "../ItemListContainer/card.module.scss";
+import styles from "./itemDetailContainer.module.scss";
+import { doc, getDoc } from 'firebase/firestore';
+import db from "../../../db/firebase-config";
 
 const ItemDetailContainer = () => {
-    const [product, setProduct] = useState({})
-    const {id} = useParams ();
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
-        .then((response) => response.json())
-        .then((data) => 
-          setProduct(data));
-    }, [id]);
+  const [item, setitem] = useState({})
+  const {id} = useParams()
+  const itemRef = doc(db , "items" , id)
+
+  const getItem = async () =>{
+    const itemDoc = await getDoc(itemRef)
+    setitem(itemDoc.data());
+    
+  }
+
+  useEffect (() => {
+    getItem()
+  } ,[])
 
   return (
             
-            <div className={styles.containeruno}>
-            <h3>{product.title}</h3>
-            <img src={product.image} alt={product.title} width="200" height="250" />
-            <p>{product.description}</p>
-            <p>$ {product.price}</p>
-            <p>{product.category}</p>
+            <div className={styles.containerUnoPrincipal}>
+              <div className={styles.containeruno}>
+                <h3>{item.title}</h3>
+                <img src={item.image} alt={item.title} width="200" height="250" />
+                <p>{item.description}</p>
+                <p>$ {item.price}</p>
+                <p>{item.category}</p>
+              </div>
             </div>
             
   )
