@@ -5,6 +5,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer"
 import { Navigate, Route, Routes } from "react-router-dom"
 import DataProvider from "./components/Context/DataContext"
 import CartContent from "./components/CartContent/CartContent"
+import Formulario from "./components/forms/formulario"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" element={<CartContent/>} />
         <Route path="/category/:categoryName" element={<ItemListContainer/>}/>
         <Route path="/item/:id" element={<ItemDetailContainer/>}/>
+        <Route path="/formulario" element={<Formulario/>}></Route>
       </Routes>
       </DataProvider>
     </>

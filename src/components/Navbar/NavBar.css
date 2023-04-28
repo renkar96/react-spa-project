@@ -7,12 +7,14 @@
  }
  .navbar {
      display: flex;
+     justify-content: space-around;
      align-items: center;
      margin-top: 40px;
-     margin-left: 30px;
+     margin-left: 40px;
      padding: 0px 14px;
      height: 80px;
-     background-color: rgba(0, 0, 0, .4);
+     width: 700px;
+     background-color: rgb(88, 88, 88);
      border-radius: 50px;
      text-decoration: none;
      
@@ -29,3 +31,9 @@
     background-color: white;
     border-radius: 50px;
  }
+
+.cart-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}

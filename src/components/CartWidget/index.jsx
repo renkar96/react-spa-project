@@ -4,7 +4,7 @@ import { BiCart } from "react-icons/bi";
 const cartWidget = () => {
   return (
     <>
-    <h2><BiCart/></h2>
+    <h1><BiCart/></h1>
     
     </>
     

@@ -9,10 +9,10 @@ import { Link, } from 'react-router-dom';
 function ItemListContainer() {
 
   const [items, setitems] = useState([])
-  const itemsRef = collection(db, "items")
   const { categoryName } = useParams();
-
+  
   const getItems = async () => {
+    const itemsRef = collection(db, "items")
     const itemsCollection = await getDocs(itemsRef)
     const items = itemsCollection.docs.map(doc => ({ ...doc.data(), id: doc.id }))
     categoryName ? setitems(items.filter(item => item.category === categoryName)) : setitems(items);
@@ -20,7 +20,7 @@ function ItemListContainer() {
 
   useEffect(() => {
     getItems()
-  }, [])
+  }, [categoryName])
 
   
 
@@ -32,8 +32,8 @@ function ItemListContainer() {
           <div className={styles.container}>
             <h3>{item.title}</h3>
             <img src={item.image} alt={item.title} width="150" height="150" />
-            <p>$ {item.price}</p>
-            <p>{item.category}</p>
+            <h3>$ {item.price}</h3>
+            <h3>{item.category}</h3>
           </div>
         </Link>
       ))}

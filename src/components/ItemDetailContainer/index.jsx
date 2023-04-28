@@ -13,19 +13,15 @@ const ItemDetailContainer = () => {
 
   const getItem = async () =>{
     const itemDoc = await getDoc(itemRef)
-    setitem(itemDoc.data());
-    
+    setitem({...itemDoc.data(),id:id});
   }
 
   useEffect (() => {
     getItem()
   } ,[])
 
-  const { cart, setCart } = useContext(dataContext);
+  const {  buyProducts } = useContext(dataContext);
 
-  const buyProducts = (item) => {
-    setCart([...cart, item])
-  }
 
   return (
             
@@ -33,9 +29,9 @@ const ItemDetailContainer = () => {
               <div className={styles.containeruno}>
                 <h3>{item.title}</h3>
                 <img src={item.image} alt={item.title} width="200" height="250" />
-                <p>{item.description}</p>
-                <p>$ {item.price}</p>
-                <p>{item.category}</p>
+                <h4>{item.description}</h4>
+                <h3>$ {item.price}</h3>
+                <h3>{item.category}</h3>
                 <button onClick={() => buyProducts(item)}>Agregar</button>
               </div>
             </div>
